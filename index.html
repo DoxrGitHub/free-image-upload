@@ -2,49 +2,27 @@
 <html>
 <head>
     <title>Image Upload to Discord</title>
-    <script>
-        async function uploadImage() {
-            const fileInput = document.getElementById('imageInput');
-            const file = fileInput.files[0];
-            if (!file) {
-                document.getElementById('output').innerHTML = 'Please select an image file to upload.';
-                return;
-            }
-
-            const formData = new FormData();
-            formData.append('file', file);
-
-            try {
-                const response = await fetch('https://discord.com/api/webhooks/1219672783101886604/Jlg3TV-rwpyV9ZZveeYwJOutrkHC3vusdDdOtwjAymOX4jq4Se9Zm_GFz2CNyubGudul', {
-                    method: 'POST',
-                    body: formData
-                });
-
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-
-                const data = await response.json();
-                if (data && data.attachments && data.attachments.length > 0) {
-                    const attachment = data.attachments[0];
-                    document.getElementById('output').innerHTML = 'Image URL: ' + attachment.url;
-                } else {
-                    document.getElementById('output').innerHTML = 'Failed to upload image.';
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                document.getElementById('output').innerHTML = 'Error uploading image: ' + error.message;
-            }
-        }
-    </script>
+    <script src="assets/upload.js"></script>
+    <script src="assets/onclick.js"></script>
+    <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-    <input type="file" id="imageInput" accept="image/*">
-    <button onclick="uploadImage()">Upload Image</button>
+  <div id="maincontainer" class="container">
+  <h1>Doxr's File Upload</h1>
+    <select id="serviceSelect">
+     <option value="discord" selected>Discord</option>
+    </select>
+    <br>
+    <br>
+    <input type="file" id="imageInput" accept="*">
+  <br>
+  <br>
+    <button onclick="onc(document.getElementById('serviceSelect').value)">Upload File</button>
   <br>
   <br>
   <div id="output">
-    Output goes here...
+    <p>Outputs goes here...</p>
+  </div>
   </div>
 </body>
 </html>

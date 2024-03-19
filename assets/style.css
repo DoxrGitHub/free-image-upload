@@ -1,0 +1,64 @@
+body {
+ min-height: 100vh;
+ overflow: hidden;
+ width: 100%;
+ background-color: #eff1f5;
+}
+
+@font-face {
+ font-family: 'XFin';
+ src: url('xfin.ttf') format('truetype');
+}
+
+/* BACKGROUND INEFFICIENT BUFFOONERY, CATPUCCIN :P */
+
+body::before {
+ content: "";
+ position: absolute;
+ top: -10%;
+ left: -10%;
+ width: 110%;
+ height: 110%;
+ background-image: linear-gradient(to right, 
+                                      #eff1f5 0%, #eff1f5 20%, 
+                                      #303446 20%, #303446 40%, 
+                                      #24273a 40%, #24273a 60%, 
+                                      #1e1e2e 60%, #1e1e2e 80%, 
+                                      #11111b 80%, #11111b 100%);
+ background-size: 100% 100%;
+ background-repeat: no-repeat;
+ transform: skewX(-10deg);
+ z-index: -1;
+}
+
+.container {
+  font-family: 'XFin', sans-serif;
+  background-color: #494d64;
+  color: white;
+  padding: 30px;
+  border-radius: 2rem;
+  border-style: solid;
+  border-color: #cdd6f4;
+  border-width: 0.5rem;
+  display: inline-block;
+}
+
+.minicontainer {
+ font-family: 'XFin', sans-serif;
+ background-color: #494d64;
+ color: white;
+ padding: 10px;
+ margin-bottom: 10px;
+ border-radius: 2rem;
+ border-style: solid;
+ border-color: #cdd6f4;
+ border-width: 0.5rem;
+ display: inline-block;
+ transition: background-color 0.2s ease, transform 0.2s ease; 
+}
+
+.minicontainer:hover {
+ background-color: #dc8a78;
+ cursor: pointer;
+ transform: scale(1.05);
+}
