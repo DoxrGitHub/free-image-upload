@@ -8,7 +8,6 @@ function uploadImage(webhook="https://discord.com/api/webhooks/12196727831018866
     const formData = new FormData();
     formData.append('file', file);
 
-    // Extract the file name before uploading
     const fileName = file.name;
 
     return fetch(webhook, {
@@ -22,7 +21,6 @@ function uploadImage(webhook="https://discord.com/api/webhooks/12196727831018866
     }).then(data => {
         if (data && data.attachments && data.attachments.length > 0) {
             const attachment = data.attachments[0];
-            // Return both the file name and the URL
             return `File Name: ${fileName}, Image URL: ${attachment.url}`;
         } else {
             return 'Failed to upload image.';
